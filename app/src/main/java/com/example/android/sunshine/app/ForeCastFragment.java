@@ -1,6 +1,7 @@
 package com.example.android.sunshine.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -99,7 +100,10 @@ public class ForeCastFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Toast.makeText(MainActivity.this,"You click: " + list.get(i), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "You click: " + weekForecast.get(i), Toast.LENGTH_SHORT).show();
+               //  Toast.makeText(getActivity(), "You click: " + weekForecast.get(i), Toast.LENGTH_SHORT).show();
+                String forecast = adapter.getItem(i);
+                Intent intent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(intent);
             }
         });
 
